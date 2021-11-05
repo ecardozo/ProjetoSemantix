@@ -11,3 +11,5 @@ Os dados deverão inicialmente de maneira estática, cortada em um determinada d
 
 Neste primeiro momento o ideal é conhecer a base de dados que será analisada e o tipo de informação que se pretende investigar.
 
+
+
