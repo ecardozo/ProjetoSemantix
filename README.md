@@ -33,3 +33,4 @@ Neste primeiro momento o ideal é conhecer a base de dados que será analisada e
 
 2º Atividade - Otimizar os dados do HDFS particionando por munícipio em uma tabela Hive.
 
+Criação do Banco de Dados no Hive, acessando o hive pelo hive-server e após o beeline abrir a conexão
