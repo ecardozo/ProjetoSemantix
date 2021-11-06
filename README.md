@@ -11,5 +11,19 @@ Os dados deverão inicialmente de maneira estática, cortada em um determinada d
 
 Neste primeiro momento o ideal é conhecer a base de dados que será analisada e o tipo de informação que se pretende investigar.
 
+1º Atividade - Subir os dados brutos para o HDFS.
 
+- Aqui foi criado um diretório dentro do /user o /covid
+
+  ​	hdfs dfs -mkdir /user/covid
+
+- Após copiado os arquivos com a extensão .csv para o HDFS e diretório covid
+
+  ​	hdfs dfs -put /input/HIST*.csv /user/covid
+
+- Verificado se ocorreu sucesso e se os arquivos estão no local correto
+
+  ​	hdfs dfs -ls /user/covid
+
+  ![](D:\00 Semantix\Projeto Final\CapturaDeTela\EnvioDeDadosBrutosHDFS.png)
 
