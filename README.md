@@ -17,15 +17,15 @@ Neste primeiro momento o ideal é conhecer a base de dados que será analisada e
 
 - Aqui foi criado um diretório dentro do /user o /covid
 
-  ​	hdfs dfs -mkdir /user/covid
+  ​	`hdfs dfs -mkdir /user/covid`
 
 - Após copiado os arquivos com a extensão .csv para o HDFS e diretório covid
 
-  ​	hdfs dfs -put /input/HIST*.csv /user/covid
+  ​	`hdfs dfs -put /input/HIST*.csv /user/covid`
 
 - Verificado se ocorreu sucesso e se os arquivos estão no local correto
 
-  ​	hdfs dfs -ls /user/covid
+  ​	`hdfs dfs -ls /user/covid`
 
   ![img1](https://github.com/ecardozo/ProjetoSemantix/blob/main/CapturaDeTela/EnvioDeDadosBrutosHDFS.png)
 
@@ -33,5 +33,34 @@ Neste primeiro momento o ideal é conhecer a base de dados que será analisada e
 
 2º Atividade - Otimizar os dados do HDFS particionando por munícipio em uma tabela Hive.
 
-Criação do Banco de Dados no Hive, acessando o hive pelo hive-server e após o beeline abrir a conexão.
+- Criação do Banco de Dados no Hive, acessando o hive pelo hive-server e após o beeline abrir a conexão.
 
+![img2](https://github.com/ecardozo/ProjetoSemantix/blob/main/CapturaDeTela/CriacaoBDCovid.png)
+
+- Criação da tabela no Hive
+
+`create external table covidmunicipio(
+regiao string,
+estado string,
+coduf int,
+codmun int,
+codRegiaoSaude int,
+nomeRegiaoSaude string,
+data string,
+semanaEpi int,
+populacaoTCU2019 bigint,
+casosAcumulado bigint,
+casosNovos bigint,
+obitosAcumulado bigint,
+obitosNovos int,
+Recuperadosnovos bigint,
+emAcompanhamentoNovos bigint
+)
+comment "Mapeamento da Base de Dados COVID-19 particionada por municipio"
+partitioned by (municipio string)
+row format delimited
+fields terminated by '\t'
+lines terminated by '\n'
+stored as textfile
+location 'hdfs://namenode:8020/user/covid'
+tblproperties("skip.header.line.count"="1");`
