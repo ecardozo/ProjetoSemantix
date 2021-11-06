@@ -25,5 +25,5 @@ Neste primeiro momento o ideal é conhecer a base de dados que será analisada e
 
   ​	hdfs dfs -ls /user/covid
 
-  
+  ![](https://github.com/ecardozo/ProjetoSemantix/blob/main/CapturaDeTela/EnvioDeDadosBrutosHDFS.png)
 
