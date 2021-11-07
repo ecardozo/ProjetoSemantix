@@ -21,7 +21,7 @@ Neste primeiro momento o ideal é conhecer a base de dados que será analisada e
 
 - Após copiado os arquivos com a extensão .csv para o HDFS e diretório covid
 
-  ​	`hdfs dfs -put /input/HIST*.csv /user/covid`
+  ​	`[hdfs dfs -put /input/HIST*.csv /user/covid]`
 
 - Verificado se ocorreu sucesso e se os arquivos estão no local correto
 
@@ -54,7 +54,9 @@ casosNovos bigint,
 obitosAcumulado bigint,
 obitosNovos int,
 Recuperadosnovos bigint,
-emAcompanhamentoNovos bigint
+emAcompanhamentoNovos bigint,  `
+
+`interiormetropolitana int
 )
 comment "Mapeamento da Base de Dados COVID-19 particionada por municipio"
 partitioned by (municipio string)
@@ -64,3 +66,16 @@ lines terminated by '\n'
 stored as textfile
 location 'hdfs://namenode:8020/user/covid'
 tblproperties("skip.header.line.count"="1");`
+
+- Dados acumulados do munícipio relacionados a última semana de envio de informações:
+
+`dadosGerais = spark.read.csv("/user/covid", header="true", sep=";")`
+
+​			Carregados os dado pelo Jupyter Notebook
+
+​			Foi observado os seguintes dados
+
+`casosAcumulados = dadosCovidBrasil.groupBy("municipio").agg(last("casosAcumulado").alias("Acumulado"))`
+
+`casosAcumulados.show(10)`
+
