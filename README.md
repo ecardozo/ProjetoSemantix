@@ -79,3 +79,5 @@ tblproperties("skip.header.line.count"="1");`
 
 `casosAcumulados.show(10)`
 
+![img4](https://github.com/ecardozo/ProjetoSemantix/blob/main/CapturaDeTela/TelaDadosAcumulado.png)
+
