@@ -75,9 +75,11 @@ tblproperties("skip.header.line.count"="1");`
 
 ​			Foi observado os seguintes dados
 
-`casosAcumulados = dadosCovidBrasil.groupBy("municipio").agg(last("casosAcumulado").alias("Acumulado"))`
+`casosAcumulados = dadosCovidBrasil.groupBy("municipio").agg(last("casosAcumulado").alias("Casos Acumulado"), last("casosNovos").alias("Novos Casos") )`
 
-`casosAcumulados.show(10)`
+`casosAcumulados.show(15)`
 
 ![img4](https://github.com/ecardozo/ProjetoSemantix/blob/main/CapturaDeTela/TelaDadosAcumulado.png)
 
+`#salvando os dados
+casosAcumulados.write.orc("/user/covid/relatorio", compression="zlib")`
