@@ -107,6 +107,8 @@ interior/metropolitana
 
 Por se tratar de dados coletados de todo Brasil, podemos entender que há valores que se caso não sejam bem definidos pode dar uma falsa e errada interpretação.
 
+
+
 - Dados acumulados do munícipio relacionados a última semana de envio de informações:
 
 `dadosGerais = spark.read.csv("/user/covid", header="true", sep=";")`
