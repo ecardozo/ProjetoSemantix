@@ -67,6 +67,46 @@ stored as textfile
 location 'hdfs://namenode:8020/user/covid'
 tblproperties("skip.header.line.count"="1");`
 
+Com o objetivo de realizar a otimização das tabelas, será necessário avaliar os atuais dados coletados neste arquivo .csv que será usado para diversas análises.
+
+A tabela bruta (raw) neste caso possui os campos 
+
+regiao;
+
+estado;
+
+municipio;
+
+coduf;
+
+codmun;
+
+codRegiaoSaude;
+
+nomeRegiaoSaude;
+
+data;
+
+semanaEpi;
+
+populacaoTCU2019;
+
+casosAcumulado;
+
+casosNovos;
+
+obitosAcumulado;
+
+obitosNovos;
+
+Recuperadosnovos;
+
+emAcompanhamentoNovos;
+
+interior/metropolitana
+
+Por se tratar de dados coletados de todo Brasil, podemos entender que há valores que se caso não sejam bem definidos pode dar uma falsa e errada interpretação.
+
 - Dados acumulados do munícipio relacionados a última semana de envio de informações:
 
 `dadosGerais = spark.read.csv("/user/covid", header="true", sep=";")`
@@ -81,5 +121,8 @@ tblproperties("skip.header.line.count"="1");`
 
 ![img4](https://github.com/ecardozo/ProjetoSemantix/blob/main/CapturaDeTela/TelaDadosAcumulado.png)
 
-`#salvando os dados
-casosAcumulados.write.orc("/user/covid/relatorio", compression="zlib")`
+`#salvando os dados`
+`casosAcumulados.write.orc("/user/covid/relatorio", compression="zlib")`
+
+
+
